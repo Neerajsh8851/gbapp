@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/whatshome_icon"
+            android:title="Home" />
+        <item
+            android:id="@+id/nav_fav"
+            android:icon="@drawable/favourite_icon_whats"
+            android:title="Favourite" />
+        <item
+            android:id="@+id/nav_float"
+            android:icon="@drawable/whatsic_bubble"
+            android:title="Floating" />
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/whatssetting_icon"
+            android:title="Settings" />
+
+    </group>
+
+    <item android:title="@string/communicate">
+        <menu>
+                <item
+                    android:id="@+id/nav_share"
+                    android:icon="@drawable/whatsic_sharee"
+                    android:title="Share" />
+                <item
+                    android:id="@+id/nav_send"
+                    android:icon="@drawable/ic_email_black_whats"
+                    android:visible="false"
+                    android:title="Send" />
+        </menu>
+    </item>
+
+</menu>

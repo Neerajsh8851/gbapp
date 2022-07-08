@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/motionLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layoutDescription="@xml/status_saver_scene"
+    tools:context=".StatusActivity">
+
+    <!--    bottom content-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/drawerHeader"
+        android:layout_width="274dp"
+        android:layout_height="0dp"
+        android:background="@drawable/drawer_header_bg"
+        android:paddingVertical="56dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/appLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/ic_launcher"
+            app:layout_constraintEnd_toEndOf="@id/headerTitle"
+            app:layout_constraintStart_toStartOf="@id/headerTitle"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/headerTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/appLogo"
+            android:layout_marginTop="12dp"
+            android:text="@string/app_name"
+            android:textColor="?colorSurface"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/appLogo" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/drawerBody"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:paddingStart="16dp"
+        android:paddingTop="18dp"
+        android:paddingEnd="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/drawerHeader">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/recentStatusTab"
+            android:layout_width="274dp"
+            android:layout_height="56dp"
+            android:layout_marginVertical="8dp"
+            android:background="@drawable/drawer_nav_button_background"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/tab1Dot"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/ic_baseline_circle_24" />
+
+            <TextView
+                android:id="@+id/tab1Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/recent_tab_text"
+                android:textStyle="bold" />
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/savedStatusTab"
+            android:layout_width="274dp"
+            android:layout_height="56dp"
+            android:layout_marginVertical="8dp"
+            android:background="@drawable/drawer_nav_button_background"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/tab2Dot"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/ic_baseline_circle_24"
+                app:tint="?attr/colorPrimary" />
+
+            <TextView
+                android:id="@+id/tab2Text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="@string/saved_tab_text"
+                android:textStyle="bold" />
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/btnShare"
+            android:layout_width="274dp"
+            android:layout_height="56dp"
+            android:layout_marginVertical="8dp"
+            android:background="@drawable/drawer_nav_button_background"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/ic_baseline_share_24"
+                app:tint="?attr/colorSecondary" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="SHARE THIS APP"
+                android:textColor="?colorSecondary"
+                android:textStyle="bold" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <com.google.android.ads.nativetemplates.TemplateView
+            android:id="@+id/templateView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_marginVertical="16dp"
+            app:gnt_template_type="@layout/gnt_small_template_view" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    <LinearLayout
+        android:id="@+id/topContentView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="?attr/colorSurface"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <FrameLayout
+            android:id="@+id/topBar"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="?attr/colorSurface">
+
+
+            <ImageView
+                android:id="@+id/menu"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center_vertical|start"
+                android:contentDescription="navigationIcon"
+                android:padding="10dp"
+                android:src="@drawable/ic_menu"
+                app:tint="?attr/colorPrimary" />
+
+            <TextView
+                android:id="@+id/title_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/status_top_bar_title"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="?attr/colorPrimary"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/icon_refresh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/page_h_margin"
+                app:tint="?attr/colorPrimary"
+                android:src="@drawable/ic_baseline_refresh_24"
+                android:layout_gravity="end|center_vertical"/>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <FrameLayout
+            android:id="@+id/bannerAdContainer"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:paddingTop="4dp"/>
+
+    </LinearLayout>
+</androidx.constraintlayout.motion.widget.MotionLayout>

@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ly"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bck"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical" >
+
+    <ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:id="@+id/layoutspinner"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/layout_header_of_item"
+                android:layout_width="fill_parent"
+                android:layout_height="50.0dip"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:background="@android:color/white"
+                android:orientation="horizontal"
+                android:padding="10.0dip" >
+
+                <ImageView
+                    android:id="@+id/activity_rajannew_image"
+                    android:layout_width="25.0dip"
+                    android:layout_height="25.0dip"
+                    android:layout_marginLeft="8.0dip"
+                    android:layout_marginRight="8.0dip"
+                    android:layout_marginTop="3.0dip"
+                    android:contentDescription="cd_main_image"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/fonticwhats" />
+
+                <Spinner
+                    android:id="@+id/spinner"
+                    style="@android:style/Widget.Holo.Light.Spinner"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4.5"
+                    android:backgroundTint="#d11f08"
+                    android:padding="0dp"
+                    android:prompt="@string/spinner_title" />
+
+                <Spinner
+                    android:id="@+id/spinnerd"
+                    style="@android:style/Widget.Holo.Light.Spinner"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4.5"
+                    android:backgroundTint="#d11f08"
+                    android:padding="0dp"
+                    android:prompt="@string/spinner_title" />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/activity_rajannew_seperator"
+                android:layout_width="match_parent"
+                android:layout_height="1dip"
+                android:layout_marginLeft="0dip"
+                android:layout_marginRight="0dip"
+                android:background="@color/colorAccent" />
+
+            <RelativeLayout
+                android:id="@+id/fbads"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerVertical="true"
+                android:background="@color/white">
+
+                <LinearLayout
+                    android:id="@+id/banner_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="1dp"
+                    android:orientation="vertical"
+                    android:visibility="visible" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible" >
+
+                <LinearLayout
+                    android:id="@+id/lyr"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <ImageView
+                        android:id="@+id/activity_rajannew_view_imager"
+                        android:layout_width="25.0dip"
+                        android:layout_height="25.0dip"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginBottom="-3dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="3dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/enter_whats" />
+
+                    <TextView
+                        android:id="@+id/fragment_one_next_titler"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="-3dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginTop="3dp"
+                        android:text="Enter Your Text:"
+                        android:textColor="@color/black"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/input_layout_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/inputtext"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="0dp"
+                        android:layout_marginRight="0dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/btnmain_whats"
+                        android:elevation="50dp"
+                        android:gravity="top|left"
+                        android:inputType="textMultiLine"
+                        android:minLines="5"
+                        android:maxLines="50"
+                        android:overScrollMode="always"
+                        android:scrollHorizontally="false"
+                        android:scrollbarStyle="outsideInset"
+                        android:scrollbars="vertical"
+                        app:pressedTranslationZ="12dp" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="visible" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal" >
+
+                    <ImageView
+                        android:id="@+id/activity_rajannew_view_image"
+                        android:layout_width="25.0dip"
+                        android:layout_height="25.0dip"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginBottom="-3dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="3dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/resultimgwhats" />
+
+                    <TextView
+                        android:id="@+id/fragment_one_next_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="-3dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginTop="3dp"
+                        android:text="Result Text:"
+                        android:textColor="@color/black"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/input_layout_passwordr"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/inputtextr"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="0dp"
+                        android:layout_marginRight="0dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:background="@drawable/btnmain_whats"
+                        android:gravity="top|left"
+                        android:inputType="textMultiLine"
+                        android:minLines="5"
+                        android:maxLines="50"
+                        android:overScrollMode="always"
+                        android:scrollHorizontally="false"
+                        android:scrollbarStyle="outsideInset"
+                        android:scrollbars="vertical" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/fabLayout3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="@dimen/standard_3"
+        android:layout_marginEnd="@dimen/fab_rmarginr"
+        android:layout_marginRight="@dimen/fab_rmargin"
+        android:clipToPadding="false"
+        android:gravity="center_vertical"
+        android:padding="@dimen/standard_12"
+        android:visibility="gone" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Send To Whatsapp"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:elevation="6dp"
+            android:src="@drawable/wtswhats"
+            android:visibility="invisible"
+            app:backgroundTint="@color/colorFAB1"
+            app:pressedTranslationZ="12dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/fabLayout2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="@dimen/standard_2"
+        android:layout_marginEnd="@dimen/fab_rmarginr"
+        android:layout_marginRight="@dimen/fab_rmargin"
+        android:clipToPadding="false"
+        android:gravity="center_vertical"
+        android:padding="@dimen/standard_12"
+        android:visibility="gone" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Share To Facebook"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:elevation="6dp"
+            android:src="@drawable/facebookwhats"
+            android:visibility="invisible"
+            app:backgroundTint="@color/white"
+            app:pressedTranslationZ="12dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/fabLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="@dimen/standard_1"
+        android:layout_marginEnd="@dimen/fab_rmarginr"
+        android:layout_marginRight="@dimen/fab_rmargin"
+        android:animateLayoutChanges="true"
+        android:clipToPadding="false"
+        android:gravity="center_vertical"
+        android:padding="@dimen/standard_12"
+        android:visibility="gone" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Copy Text"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:elevation="6dp"
+            android:src="@drawable/cpy_whats"
+            android:visibility="invisible"
+            app:backgroundTint="@color/white"
+            app:pressedTranslationZ="12dp" />
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:elevation="6dp"
+        android:src="@drawable/whatssent"
+        app:backgroundTint="@color/colorAccent"
+        app:pressedTranslationZ="12dp" />
+
+    <LinearLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_weight="1" />
+
+        <com.skyfishjy.library.RippleBackground
+            android:id="@+id/content"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:foregroundGravity="bottom"
+            android:layout_gravity="bottom|end"
+            app:layout_anchorGravity="bottom|right|end"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            app:rb_color="#F48FB1"
+            app:rb_duration="5000"
+            app:rb_radius="23dp"
+            app:rb_rippleAmount="8"
+            app:rb_scale="13" />
+    </LinearLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">GB APK Version 2022</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- MainActivity   -->
+    <string name="btn_status_text">Whats Status</string>
+    <string name="tab2">Stylish Font</string>
+    <string name="tab3">Direct Chat</string>
+    <string name="share">app share</string>
+
+    <!--StatusActivity-->
+    <string name="recent_tab_text">RECENT STATUSES</string>
+    <string name="saved_tab_text">SAVED STATUSES</string>
+    <string name="video_tab_text">VIDEOS</string>
+    <string name="image_tab_text">IMAGES</string>
+    <string name="download_button_desc">download this image to gallery</string>
+    <string name="content_dec_preview">preview image</string>
+    <string name="status_top_bar_title">RECENT STATUSES</string>
+
+    <!--permission pop up values-->
+    <string name="req_perm_btn">GRANT</string>
+    <string name="permission_pop_up_dialog_text">What’s next? Just grant for storage permissions.</string>
+
+    <string name="admob_app_id">ca-app-pub-3940256099942544~3347511713</string>
+    <string name="back_arrow_desc">go to preview screen</string>
+    <string name="phone_number_hint">Phone</string>
+    <string name="enter_your_message">"Write your message here."</string>
+    <string name="direct_chat_text">Direct Chat</string>
+
+
+    <string name="facebook_app_id">596494968459660</string>
+    <string name="facebook_client_token">af67d2181bef4daf94f4c399e529e532</string>
+</resources>

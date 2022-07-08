@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetEnd="@+id/open"
+        motion:constraintSetStart="@id/closed"
+        motion:duration="300">
+        <OnClick motion:targetId="@+id/menu" />
+    </Transition>
+
+
+    <ConstraintSet android:id="@+id/closed">
+
+        <Constraint
+            android:id="@id/drawerHeader"
+            android:layout_width="274dp"
+            android:layout_height="0dp"
+            android:alpha="1"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"/>
+
+        <Constraint
+            android:id="@id/drawerBody"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:alpha="1"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintTop_toBottomOf="@id/drawerHeader" />
+
+        <Constraint
+            android:id="@+id/topContentView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintTop_toTopOf="parent" />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/open">
+
+        <Constraint
+            android:id="@id/drawerHeader"
+            android:layout_width="274dp"
+            android:layout_height="0dp"
+            android:alpha="1"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintStart_toStartOf="parent" />
+
+        <Constraint
+            android:id="@id/drawerBody"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:alpha="1"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintTop_toBottomOf="@id/drawerHeader" />
+        <Constraint
+            android:id="@+id/topContentView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintTop_toTopOf="parent"
+            android:scaleX="0.5"
+            android:scaleY="0.5"
+            android:translationX="360dp"
+            android:translationY="176dp" />
+    </ConstraintSet>
+</MotionScene>

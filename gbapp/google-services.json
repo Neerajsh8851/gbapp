@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "409155113151",
+    "project_id": "gb-apk-version-2022",
+    "storage_bucket": "gb-apk-version-2022.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:409155113151:android:905ba072b0911c2aec360a",
+        "android_client_info": {
+          "package_name": "com.nibodev.gd.gbversion"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "409155113151-bddn6eiprvdmdrpaukns2r0iveqm5fc7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5QMWke1EzXfNvXoTZjuLsMm5DYqsAyQE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "409155113151-bddn6eiprvdmdrpaukns2r0iveqm5fc7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

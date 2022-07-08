@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:elevation="0dp">
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorBackground"
+            android:theme="@style/MyThemeOverlay_Toolbar"
+            app:navigationIcon="@drawable/ic_round_arrow_back_24"
+            app:titleTextColor="@color/colorText">
+        </com.google.android.material.appbar.MaterialToolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="?attr/actionBarSize">
+    <com.google.android.ads.nativetemplates.TemplateView
+        android:id="@+id/template_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:gnt_template_type="@layout/gnt_small_template_view" />
+
+    <FrameLayout
+        android:id="@+id/showFragment"
+        android:layout_width="match_parent"
+        android:layout_below="@id/template_view"
+        android:layout_height="match_parent">
+    </FrameLayout>
+</RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

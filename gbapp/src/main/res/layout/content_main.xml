@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.ads.nativetemplates.TemplateView
+            android:id="@+id/template_view_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_marginVertical="16dp"
+            android:layout_marginHorizontal="@dimen/page_h_margin"
+            app:gnt_template_type="@layout/gnt_medium_template_view" />
+
+        <LinearLayout
+            android:layout_gravity="center_horizontal"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="0dp"
+            android:layout_width="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:alpha="0.7"
+                android:gravity="center"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:paddingLeft="14dp"
+                android:paddingRight="14dp"
+                android:text="@string/app_name"
+                android:textColor="?attr/colorOnSurface"
+                android:textSize="35sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:alpha="0.7"
+                android:gravity="center"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:paddingLeft="14dp"
+                android:paddingRight="14dp"
+                android:text="2022-23"
+                android:textColor="?attr/colorOnSurface"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linear1"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/page_h_margin"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_height="140dp"
+                    android:layout_marginBottom="18sp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginTop="14dp"
+                    android:layout_width="match_parent"
+                    app:cardBackgroundColor="?attr/colorPrimary"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="10dp">
+
+                    <LinearLayout
+                        android:gravity="center"
+                        android:id="@+id/btnStatus"
+                        android:layout_height="156dp"
+                        android:layout_width="match_parent"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_height="60dp"
+                            android:layout_width="70dp"
+                            android:padding="3dp"
+                            android:src="@drawable/animalwhats"
+                            app:tint="?attr/colorOnPrimary" />
+
+                        <TextView
+                            android:gravity="center"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:paddingEnd="14dp"
+                            android:paddingStart="14dp"
+                            android:text="@string/btn_status_text"
+                            android:textColor="?attr/colorOnPrimary"
+                            android:textSize="22sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/btnDirectChat"
+                    android:layout_height="200dp"
+                    android:layout_marginBottom="22sp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    app:cardBackgroundColor="@color/ext_dark_blue"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="10dp">
+
+                    <LinearLayout
+                        android:gravity="center"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_height="60dp"
+                            android:layout_width="70dp"
+                            android:padding="3dp"
+                            android:src="@drawable/ic_baseline_chat_24"
+                            app:tint="?attr/colorOnPrimary" />
+
+                        <TextView
+                            android:gravity="center"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:paddingEnd="14dp"
+                            android:paddingStart="14dp"
+                            android:text="@string/d_chat"
+                            android:textColor="?attr/colorOnPrimary"
+                            android:textSize="22sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/btnPrivacyPolicy"
+                    android:layout_height="140dp"
+                    android:layout_marginBottom="22sp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    app:cardBackgroundColor="@color/ext_honeysuckle"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="10dp">
+
+                    <LinearLayout
+                        android:gravity="center"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_height="60dp"
+                            android:layout_width="70dp"
+                            android:padding="3dp"
+                            android:src="@drawable/favourite_icon_whats"
+                            app:tint="?attr/colorOnPrimary" />
+
+                        <TextView
+                            android:gravity="center"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:paddingEnd="14dp"
+                            android:paddingStart="14dp"
+                            android:text="Privacy Policy"
+                            android:textColor="?attr/colorOnPrimary"
+                            android:textSize="22sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/btnStylishFont"
+                    android:layout_height="200dp"
+                    android:layout_marginBottom="18sp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginTop="14dp"
+                    android:layout_width="match_parent"
+                    app:cardBackgroundColor="?attr/colorSecondary"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="10dp">
+
+                    <LinearLayout
+                        android:gravity="center"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_height="98dp"
+                            android:layout_width="90dp"
+                            android:src="@drawable/ic_text_format_24"
+                            app:tint="?attr/colorOnSecondary" />
+
+                        <TextView
+                            android:gravity="center"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:paddingEnd="14dp"
+                            android:paddingStart="14dp"
+                            android:text="@string/tab2"
+                            android:textColor="?attr/colorOnSecondary"
+                            android:textSize="22sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/btnShare"
+                    android:layout_height="140dp"
+                    android:layout_marginBottom="22sp"
+                    android:layout_marginEnd="14dp"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    app:cardBackgroundColor="?attr/colorTertiary"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="10dp">
+
+                    <LinearLayout
+                        android:gravity="center"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_height="60dp"
+                            android:layout_width="70dp"
+                            android:padding="3dp"
+                            android:src="@drawable/whatsic_sharee"
+                            app:tint="?attr/colorOnTertiary" />
+
+                        <TextView
+                            android:gravity="center"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:paddingEnd="14dp"
+                            android:paddingStart="14dp"
+                            android:text="@string/share"
+                            android:textColor="?attr/colorOnTertiary"
+                            android:textSize="22sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
+
+

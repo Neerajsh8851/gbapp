@@ -1,0 +1,5 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="page_h_margin" >10dp</dimen>
+    <dimen name="v_spacing">10dp</dimen>
+</resources>

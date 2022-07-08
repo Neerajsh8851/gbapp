@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.whatsgb.gbwhatsappgbapp.gbwhatsversionnew">
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <application>
+        <activity android:name=".WhatsHomeActivitysadas"/>
+        <activity android:name=".WhatsMainActivityasdf"/>
+        <activity android:name=".WhatsShowActivityasdsadsa"/>
+        <activity android:name=".WhatsEmoticonGridActivitysds"/>
+        <activity android:name=".WhatsEmoticonsActivityas"/>
+        <activity android:name="com.whatsgb.gbwhatsappgbapp.gbwhatsversionnew.stylish.FloatingStylishOpenShortCutActivitysad"/>
+
+        <service
+            android:name=".stylish.FloatingStylishService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.CONFIGURATION_CHANGED" />
+            </intent-filter>
+        </service>
+    </application>
+
+</manifest>

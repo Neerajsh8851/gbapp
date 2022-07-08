@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabScrollable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorBackground"
+            android:textColor="@color/colorText"
+            app:elevation="0dp"
+            app:tabGravity="center"
+            app:tabIndicatorColor="@color/c1"
+            app:tabIndicatorHeight="3dp"
+            app:tabMode="scrollable"
+            app:tabSelectedTextColor="@color/c1" >
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tab1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="⚽"/>
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tab2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🐻"/>
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tab3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="乙"/>
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tab4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🍔"/>
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tab5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="💡"/>
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tab6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="😃"/>
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tab7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🔣"/>
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tab8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🌇"/>
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tab9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🎌"/>
+        </com.google.android.material.tabs.TabLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="center"
+        android:textColor="@android:color/holo_red_dark"
+        android:text="Some emoji are not support in your device"/>
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="14dp"
+            android:layout_marginBottom="10dp"
+            app:cardBackgroundColor="@color/colorCard"
+            app:cardCornerRadius="2dp"
+            app:cardElevation="1dp"
+            app:cardPreventCornerOverlap="false">
+            <LinearLayout android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="3"
+                android:baselineAligned="false">
+
+                    <EditText
+                        android:layout_width="0dp"
+                        android:id="@+id/edittx"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/edit_text_bg_whats"
+                        android:focusableInTouchMode="true"
+                        android:hint="Type here"
+                        android:textColorHint="@color/colorText"
+                        android:textColor="@color/colorText"
+                        android:inputType="textMultiLine"
+                        android:maxLines="3"
+                        android:minLines="1"
+                        android:layout_weight="3"
+                        android:paddingStart="8dp"
+                        android:paddingTop="16dp"
+                        android:paddingEnd="0dp"
+                        android:paddingBottom="16dp" />
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorLine" />
+                <ImageView
+                    android:id="@+id/close22"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="4dp"
+                    android:adjustViewBounds="true"
+                    android:background="?attr/actionBarItemBackground"
+                    android:gravity="center"
+                    android:padding="6dp"
+                    android:src="@drawable/ic_backspace_black"
+                    app:tint="@color/colorTint"
+                    android:contentDescription="@string/app_name" />
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_styles"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/copy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:tint="@color/white"
+            app:backgroundTint="@color/c1"
+            app:elevation="0dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="25dp"
+            app:layout_constraintBottom_toBottomOf="@+id/rv_styles"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:rippleColor="@android:color/white"
+            app:srcCompat="@drawable/whatsic_copy" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

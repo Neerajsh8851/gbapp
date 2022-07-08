@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="req_perm_btn">OPEN</string>
+    <string name="permission_pop_up_dialog_text">What’s next? Just open the WhatsApp/Media folder on your device.</string>
+
+
+</resources>
