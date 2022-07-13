@@ -13,7 +13,7 @@ dependencyResolutionManagement {
         maven { url "https://jitpack.io" }
     }
 }
-rootProject.name = "GBVersion"
+rootProject.name = "GBApkTool"
 include ':gbapp'
 include ':gbapp:domain'
 include ':stylishfont'

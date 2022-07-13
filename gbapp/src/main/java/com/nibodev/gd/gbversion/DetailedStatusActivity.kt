@@ -23,6 +23,10 @@ private val binding get() = _binding!!
 private val statuses get() = _statuses!!.value!!
 private var isRecentStatus = false
 
+/**
+ * Detailed view of the whatsapp status videos or images.
+ */
+
 class DetailedStatusActivity : AppCompatActivity() {
     /**
      * Input params for this activity

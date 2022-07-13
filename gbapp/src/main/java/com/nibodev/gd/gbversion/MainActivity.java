@@ -3,10 +3,8 @@ package com.nibodev.gd.gbversion;
 import static com.nibodev.androidutil.AndroidUtility.console;
 import static com.nibodev.androidutil.AndroidUtility.openPrivacyPolicyInWeb;
 import static com.nibodev.androidutil.AndroidUtility.shareThisApp;
-import static com.nibodev.mobileads.MobileAd.interAdActivity;
 
 import android.os.Bundle;
-import android.os.Process;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.WindowCompat;
