@@ -12,6 +12,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/androidUtil" />
+            <option value="$PROJECT_DIR$/betterUI" />
             <option value="$PROJECT_DIR$/gbapp" />
             <option value="$PROJECT_DIR$/gbapp/domain" />
             <option value="$PROJECT_DIR$/mobileAds" />
