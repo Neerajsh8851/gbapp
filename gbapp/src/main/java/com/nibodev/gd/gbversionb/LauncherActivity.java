@@ -1,4 +1,4 @@
-package com.nibodev.gd.gbversion;
+package com.nibodev.gd.gbversionb;
 
 import static com.nibodev.androidutil.AndroidUtility.console;
 

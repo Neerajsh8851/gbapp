@@ -1,4 +1,4 @@
-package com.nibodev.gd.gbversion
+package com.nibodev.gd.gbversionb
 
 import android.Manifest
 import android.app.Activity
@@ -16,10 +16,7 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
-import androidx.core.content.FileProvider
 import androidx.core.net.toUri
-import com.facebook.FacebookSdk.getApplicationName
-import com.nibodev.androidutil.AndroidUtility
 import com.nibodev.domain.*
 import kotlinx.coroutines.*
 import java.io.File

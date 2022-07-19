@@ -1,4 +1,4 @@
-package com.nibodev.gd.gbversion;
+package com.nibodev.gd.gbversionb;
 
 import static com.nibodev.androidutil.AndroidUtility.console;
 import static com.nibodev.androidutil.AndroidUtility.openPrivacyPolicyInWeb;
@@ -11,7 +11,7 @@ import androidx.core.view.WindowCompat;
 
 import com.nibodev.androidutil.AndroidUtility;
 import com.nibodev.androidutil.Fire;
-import com.nibodev.gd.gbversion.databinding.ActivityMainBinding;
+import com.nibodev.gd.gbversionb.databinding.ActivityMainBinding;
 import com.nibodev.mobileads.MobileAd;
 import com.nibodev.mobileads.NativeAdLoader;
 import com.whatsgb.gbwhatsappgbapp.gbwhatsversionnew.WhatsHomeActivitysadas;

@@ -1,4 +1,4 @@
-package com.nibodev.gd.gbversion;
+package com.nibodev.gd.gbversionb;
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,7 +14,7 @@ import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
 import com.nibodev.domain.MediaEntity
 import com.nibodev.domain.console
-import com.nibodev.gd.gbversion.databinding.*
+import com.nibodev.gd.gbversionb.databinding.*
 import java.io.File
 
 private var _statuses: LiveData<List<MediaEntity>>? = null

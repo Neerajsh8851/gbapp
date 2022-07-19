@@ -1,4 +1,4 @@
-package com.nibodev.gd.gbversion
+package com.nibodev.gd.gbversionb
 
 import android.Manifest
 import android.animation.Animator
@@ -26,10 +26,10 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.nibodev.androidutil.Fire
 import com.nibodev.domain.MediaEntity
 import com.nibodev.domain.console
-import com.nibodev.gd.gbversion.databinding.ContentRecentStatusCardBinding
-import com.nibodev.gd.gbversion.databinding.ContentStatusListBinding
-import com.nibodev.gd.gbversion.databinding.CustomTabBinding
-import com.nibodev.gd.gbversion.databinding.FragmentStatusBinding
+import com.nibodev.gd.gbversionb.databinding.ContentRecentStatusCardBinding
+import com.nibodev.gd.gbversionb.databinding.ContentStatusListBinding
+import com.nibodev.gd.gbversionb.databinding.CustomTabBinding
+import com.nibodev.gd.gbversionb.databinding.FragmentStatusBinding
 import com.nibodev.mobileads.MobileAd.interAdActivity
 import com.nibodev.mobileads.NativeAdLoader
 

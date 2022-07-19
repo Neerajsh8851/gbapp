@@ -1,4 +1,4 @@
-package com.nibodev.gd.gbversion;
+package com.nibodev.gd.gbversionb;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,7 +8,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 import com.nibodev.androidutil.Fire;
 import com.nibodev.androidutil.AndroidUtility;
-import com.nibodev.gd.gbversion.databinding.ActivityWhatsDirectChatBinding;
+import com.nibodev.gd.gbversionb.databinding.ActivityWhatsDirectChatBinding;
 import com.nibodev.mobileads.MobileAd;
 import com.nibodev.mobileads.NativeAdLoader;
 

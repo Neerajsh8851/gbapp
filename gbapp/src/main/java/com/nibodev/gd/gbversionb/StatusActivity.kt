@@ -1,4 +1,4 @@
-package com.nibodev.gd.gbversion
+package com.nibodev.gd.gbversionb
 
 import android.animation.ValueAnimator
 import android.os.Bundle
@@ -13,7 +13,7 @@ import com.google.android.gms.ads.AdView
 import com.nibodev.androidutil.AndroidUtility.shareThisApp
 import com.nibodev.androidutil.Fire
 import com.nibodev.domain.console
-import com.nibodev.gd.gbversion.databinding.ActivityStatusBinding
+import com.nibodev.gd.gbversionb.databinding.ActivityStatusBinding
 import com.nibodev.mobileads.MobileAd
 import com.nibodev.mobileads.NativeAdLoader
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.nibodev.gd.gbversion">
+    package="com.nibodev.gd.gbversionb">
 
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
@@ -19,7 +19,7 @@
     </queries>
 
     <application
-        android:name=".GBApp"
+        android:name="com.nibodev.gd.gbversionb.GBApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -30,13 +30,13 @@
         android:theme="@style/Theme"
         tools:targetApi="s">
         <activity
-            android:name=".ExitActivity"
+            android:name="com.nibodev.gd.gbversionb.ExitActivity"
             android:exported="false" />
         <activity
-            android:name=".WhatsDirectChatActivity"
+            android:name="com.nibodev.gd.gbversionb.WhatsDirectChatActivity"
             android:exported="false" />
         <activity
-            android:name=".LauncherActivity"
+            android:name="com.nibodev.gd.gbversionb.LauncherActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity">
@@ -47,17 +47,17 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".DetailedStatusActivity"
+            android:name="com.nibodev.gd.gbversionb.DetailedStatusActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".StatusActivity"
+            android:name="com.nibodev.gd.gbversionb.StatusActivity"
             android:exported="false"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.nibodev.gd.gbversionb.MainActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" /> <!-- Sample AdMob App ID: ca-app-pub-3940256099942544~3347511713 -->

@@ -1,15 +1,12 @@
-package com.nibodev.gd.gbversion;
-
-import static com.nibodev.androidutil.AndroidUtility.console;
+package com.nibodev.gd.gbversionb;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.os.Process;
 
 import com.nibodev.androidutil.AndroidUtility;
 import com.nibodev.androidutil.Fire;
-import com.nibodev.gd.gbversion.databinding.ActivityExitBinding;
+import com.nibodev.gd.gbversionb.databinding.ActivityExitBinding;
 import com.nibodev.mobileads.NativeAdLoader;
 
 public class ExitActivity extends AppCompatActivity {
