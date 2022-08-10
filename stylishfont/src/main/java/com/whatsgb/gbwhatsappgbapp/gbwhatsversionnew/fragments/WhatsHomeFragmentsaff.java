@@ -2,6 +2,7 @@ package com.whatsgb.gbwhatsappgbapp.gbwhatsversionnew.fragments;
 
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,8 @@ import android.view.ViewGroup;
 
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+
+import com.nibodev.androidutil.AndroidUtility;
 import com.nibodev.mobileads.MobileAd;
 import com.whatsgb.gbwhatsappgbapp.gbwhatsversionnew.PrefManagersd;
 import com.whatsgb.gbwhatsappgbapp.gbwhatsversionnew.R;
@@ -116,8 +119,12 @@ public class WhatsHomeFragmentsaff extends Fragment implements View.OnClickListe
             dest = WhatsShowActivityasdsadsa.class;
             index = 11;
         }
-        MobileAd.interAdActivity(requireActivity(), dest, intent -> {
+
+        Class<?> finalDest = dest;
+        MobileAd.loadInterAd(requireActivity(), ()-> {
+            Intent intent   = new Intent(requireActivity(), finalDest);
             intent.putExtra(KEY, index);
+            startActivity(intent);
         });
     }
 }

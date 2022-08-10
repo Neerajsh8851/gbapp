@@ -104,7 +104,7 @@ public class WhatsHomeActivitysadas extends AppCompatActivity implements ChipNav
 
     @Override
     public void onItemSelected(int i) {
-        MobileAd.interAdActivity(this);
+        MobileAd.loadInterAd(this, null);
         Fragment fragment = null;
         if (i == R.id.home) {
             if (navigationView != null) {
@@ -130,7 +130,7 @@ public class WhatsHomeActivitysadas extends AppCompatActivity implements ChipNav
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        MobileAd.interAdActivity(this);
+        MobileAd.loadInterAd(this, null);
         item.setChecked(!item.isChecked());
         drawerLayout.closeDrawers();
 
@@ -207,7 +207,7 @@ public class WhatsHomeActivitysadas extends AppCompatActivity implements ChipNav
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
         } else {
-            MobileAd.interAdActivity(this);
+            MobileAd.loadInterAd(this, null);
             finishAfterTransition();
         }
     }

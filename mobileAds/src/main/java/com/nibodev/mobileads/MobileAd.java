@@ -8,8 +8,15 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.ads.AdError;
+import com.google.android.gms.ads.FullScreenContentCallback;
+import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.appopen.AppOpenAd;
 import com.google.android.gms.ads.initialization.AdapterStatus;
+import com.nibodev.androidutil.AndroidUtility;
 import com.nibodev.androidutil.Fire;
 
 import java.util.Map;
@@ -26,6 +33,22 @@ public class MobileAd {
     private static AdTimer getAdTimer() {
         if (adTimer == null) adTimer = new AdTimer(getAdWaitingTime());
         return adTimer;
+    }
+
+    /**
+     * Display interstitial ad before the destination
+     * activity
+     */
+    private static int getAdWaitingTime() {
+        String str = Fire.getString("ad_waiting_time");
+        console(TAG, "ad_waiting_time: " + str);
+        int time = 20;
+        try {
+            time = Integer.parseInt(str);
+        } catch (NumberFormatException exception) {
+            exception.printStackTrace();
+        }
+        return time * 1000; // milliseconds
     }
 
 
@@ -54,64 +77,44 @@ public class MobileAd {
         return clickCounter;
     }
 
-    public static void interAdActivity(Activity curr) {
-        if (isConnectedToNetwork(curr) && getAdClickCounter().canTrigger()) {
-            Intent intent = new Intent(curr, InterstitialAdActivity.class);
-            curr.startActivity(intent);
-        }
-    }
-
-
-    public static void interAdActivity(Activity currentActivity, Class<?> dest, IntentModifier intentModifier) {
-        Intent intent;
-        if (isConnectedToNetwork(currentActivity) && getAdClickCounter().canTrigger()) {
-            intent = new Intent(currentActivity, InterstitialAdActivity.class);
-            intent.putExtra("next-activity", dest.getName());
-        } else {
-            intent = new Intent(currentActivity, dest);
-        }
-        if (intentModifier != null) intentModifier.modifier(intent);
-        currentActivity.startActivity(intent);
-    }
-
-    public static void interAdActivity(Activity currentActivity, Class<?> dest) {
-        interAdActivity(currentActivity, dest, null);
-    }
-
-    public static void appOpenAdActivity(Activity curr) {
-        if (isConnectedToNetwork(curr)) {
-            curr.startActivity(
-                    new Intent(curr, AppOpenAdActivity.class)
-            );
-        }
-    }
-
-    public static void startActivityWithAppOpenAd(Activity currentActivity, Class<?> dest) {
-        Intent intent;
-        if (isConnectedToNetwork(currentActivity)) {
-            intent = new Intent(currentActivity, AppOpenAdActivity.class);
-            intent.putExtra("next-activity", dest.getName());
-            currentActivity.startActivity(intent);
-        } else {
-            intent = new Intent(currentActivity, dest);
-        }
-        currentActivity.startActivity(intent);
-    }
-
-
     /**
-     * Display interstitial ad before the destination
-     * activity
+     * Helper functions to load and show the Interstitial ad.
+     * @param currentActivity Activity Instance
+     * @param postAction action that should be run in the end.
      */
-    private static int getAdWaitingTime() {
-        String str = Fire.getString("ad_waiting_time");
-        console(TAG, "ad_waiting_time: " + str);
-        int time = 20;
-        try {
-            time = Integer.parseInt(str);
-        } catch (NumberFormatException exception) {
-            exception.printStackTrace();
+    public static void loadInterAd(Activity currentActivity, Runnable postAction) {
+        if (isConnectedToNetwork(currentActivity) && getAdClickCounter().canTrigger()) {
+            InterstitialAdLoader adLoader = InterstitialAdLoader.getInstance();
+            adLoader.showAd(currentActivity, () -> {
+                if (postAction != null) postAction.run();
+                adLoader.loadAd(currentActivity);
+            });
+        } else  {
+            if (postAction != null) postAction.run();
         }
-        return time * 1000; // milliseconds
     }
+
+
+    public static void loadAppOpenAd(Activity currentActivity, Runnable postAction) {
+        AppOpenAdLoader appOpenAdLoader = AppOpenAdLoader.getInstance();
+        appOpenAdLoader.postAction(() -> {
+            appOpenAdLoader.loadAd(currentActivity);
+            if (postAction != null)
+            postAction.run();
+        });
+        appOpenAdLoader.showAd(currentActivity);
+    }
+
+    public static void startActivityWithAppOpenAd(Activity currentActivity, Class<? extends Activity> dest) {
+        AppOpenAdLoader appOpenAdLoader = AppOpenAdLoader.getInstance();
+        appOpenAdLoader.postAction(() -> {
+            AndroidUtility.console("Running Post Action");
+            AndroidUtility.startActivity(currentActivity, dest);
+            // load ad for the next time
+            appOpenAdLoader.loadAd(currentActivity);
+        });
+        appOpenAdLoader.showAd(currentActivity);
+    }
+
+
 }

@@ -16,6 +16,7 @@ import android.os.HandlerThread;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.nibodev.androidutil.AndroidUtility;
 import com.nibodev.androidutil.Fire;
 import com.nibodev.mobileads.MobileAd;
 
@@ -69,9 +70,9 @@ public class LauncherActivity extends AppCompatActivity {
     }
 
     private void nextActivity() {
-        runOnUiThread(()-> {
-            MobileAd.startActivityWithAppOpenAd(LauncherActivity.this, MainActivity.class);
-            finishAfterTransition();
+        MobileAd.loadAppOpenAd(this, ()-> {
+            AndroidUtility.startActivity(this, MainActivity.class);
+            finish();
         });
     }
 

@@ -35,7 +35,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
         binding.mainContent.btnDirectChat.setOnClickListener(v -> {
-            MobileAd.interAdActivity(this, WhatsDirectChatActivity.class);
+            MobileAd.loadInterAd(this, ()-> {
+                AndroidUtility.startActivity(this, WhatsDirectChatActivity.class );
+            });
         });
 
         binding.mainContent.btnShare.setOnClickListener( v -> {
@@ -64,8 +66,10 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        MobileAd.interAdActivity(this, ExitActivity.class);
-        finishAfterTransition();
+        MobileAd.loadInterAd(this, ()-> {
+            AndroidUtility.startActivity(this, ExitActivity.class);
+            finish();
+        });
     }
 
     public void onDestroy() {

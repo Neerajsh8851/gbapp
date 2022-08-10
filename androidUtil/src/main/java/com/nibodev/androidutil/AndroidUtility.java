@@ -19,7 +19,7 @@ public class AndroidUtility {
         debugMode = mode;
     }
 
-    static void console(String msg) {
+    public static void console(String msg) {
         if (debugMode) {
             Log.d("console", msg);
         }

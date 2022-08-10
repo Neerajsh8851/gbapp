@@ -2,6 +2,7 @@ package com.whatsgb.gbwhatsappgbapp.gbwhatsversionnew;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -86,7 +87,8 @@ public class WhatsEmoticonGridActivitysds extends AppCompatActivity {
             intent.putExtra("P", i);
             startActivityForResult(intent, 101);*/
 
-            MobileAd.interAdActivity(WhatsEmoticonGridActivitysds.this, WhatsEmoticonsActivityas.class, intent -> {
+            MobileAd.loadInterAd(WhatsEmoticonGridActivitysds.this, ()-> {
+                Intent intent = new Intent(WhatsEmoticonGridActivitysds.this, WhatsEmoticonsActivityas.class);
                 intent.putExtra("image", logos[i]);
                 intent.putExtra("P", i);
             });

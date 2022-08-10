@@ -21,13 +21,11 @@
     <string name="req_perm_btn">GRANT</string>
     <string name="permission_pop_up_dialog_text">What’s next? Just grant for storage permissions.</string>
 
-    <string name="admob_app_id">ca-app-pub-3940256099942544~3347511713</string>
+    <string name="admob_app_id">ca-app-pub-7194455044083449~4006532659</string>
     <string name="back_arrow_desc">go to preview screen</string>
     <string name="phone_number_hint">Phone</string>
     <string name="enter_your_message">"Write your message here."</string>
     <string name="direct_chat_text">Direct Chat</string>
-
-
     <string name="facebook_app_id">596494968459660</string>
     <string name="facebook_client_token">af67d2181bef4daf94f4c399e529e532</string>
 </resources>

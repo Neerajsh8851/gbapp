@@ -147,7 +147,7 @@ class StatusActivity : AppCompatActivity() {
         if (isDrawerOpen()) {
             closeDrawer()
         } else {
-            MobileAd.interAdActivity(this)
+            MobileAd.loadInterAd(this, null)
             finishAfterTransition()
         }
     }

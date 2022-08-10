@@ -23,6 +23,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
+import com.nibodev.androidutil.AndroidUtility
 import com.nibodev.androidutil.Fire
 import com.nibodev.domain.MediaEntity
 import com.nibodev.domain.console
@@ -30,7 +31,7 @@ import com.nibodev.gd.gbversion.databinding.ContentRecentStatusCardBinding
 import com.nibodev.gd.gbversion.databinding.ContentStatusListBinding
 import com.nibodev.gd.gbversion.databinding.CustomTabBinding
 import com.nibodev.gd.gbversion.databinding.FragmentStatusBinding
-import com.nibodev.mobileads.MobileAd.interAdActivity
+import com.nibodev.mobileads.MobileAd
 import com.nibodev.mobileads.NativeAdLoader
 
 abstract class StatusListFragment : Fragment() {
@@ -548,7 +549,7 @@ abstract class StatusFragment : Fragment() {
 
         binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
-                interAdActivity(requireActivity())
+                MobileAd.loadInterAd(requireActivity(), null);
             }
         })
     }
@@ -577,17 +578,17 @@ class RecentStatusFragment : StatusFragment() {
                                 DetailedStatusActivity.Params(true, viewModel.newStatus.images, pos)
                             val app = requireActivity().application as GBApp
                             app.obj = param
-                            interAdActivity(
-                                requireActivity(),
-                                DetailedStatusActivity::class.java
-                            )
+                            MobileAd.loadInterAd(requireActivity()) {
+                                AndroidUtility.startActivity(requireActivity(), DetailedStatusActivity::class.java)
+                            }
+
                         }
 
                         risf.setOnItemDownloadHandler { pos ->
                             val item = viewModel.newStatus.images.value?.get(pos)
                             item?.let {
                                 requireContext().downloadStatus(it)
-                                interAdActivity(requireActivity())
+                                MobileAd.loadInterAd(requireActivity(), null)
                             }
                         }
                         risf
@@ -600,16 +601,15 @@ class RecentStatusFragment : StatusFragment() {
                                 DetailedStatusActivity.Params(true, viewModel.newStatus.videos, pos)
                             val app = requireActivity().application as GBApp
                             app.obj = param
-                            interAdActivity(
-                                requireActivity(),
-                                DetailedStatusActivity::class.java
-                            )
+                            MobileAd.loadInterAd(requireActivity()) {
+                                AndroidUtility.startActivity(requireActivity(), DetailedStatusActivity::class.java)
+                            }
                         }
                         rvsf.setOnItemDownloadHandler { pos ->
                             val item = viewModel.newStatus.videos.value?.get(pos)
                             item?.let {
                                 requireContext().downloadStatus(it)
-                                interAdActivity(requireActivity())
+                                MobileAd.loadInterAd(requireActivity(), null)
                             }
                         }
                         rvsf

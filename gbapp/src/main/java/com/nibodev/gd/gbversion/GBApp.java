@@ -47,7 +47,7 @@ public class GBApp extends Application {
             public void onActivityStarted(@NonNull Activity activity) {
                 startedActivity = activity;
                 if (startedActivity == stoppedActivity) {
-                    MobileAd.appOpenAdActivity(activity);
+                    MobileAd.loadAppOpenAd(activity, null);
                     stoppedActivity = null;
                 }
                 console(TAG, "activity started: " + activity);

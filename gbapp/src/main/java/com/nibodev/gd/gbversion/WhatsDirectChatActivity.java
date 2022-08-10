@@ -63,8 +63,7 @@ public class WhatsDirectChatActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        MobileAd.interAdActivity(this);
-        finishAfterTransition();
+        MobileAd.loadInterAd(this, this::finish);
     }
 
     public void onDestroy() {
