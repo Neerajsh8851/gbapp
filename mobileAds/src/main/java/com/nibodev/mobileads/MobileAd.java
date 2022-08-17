@@ -8,24 +8,13 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 
-import androidx.annotation.NonNull;
-
-import com.google.android.gms.ads.AdError;
-import com.google.android.gms.ads.FullScreenContentCallback;
-import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.appopen.AppOpenAd;
 import com.google.android.gms.ads.initialization.AdapterStatus;
-import com.nibodev.androidutil.AndroidUtility;
 import com.nibodev.androidutil.Fire;
 
 import java.util.Map;
 
 public class MobileAd {
-    public interface IntentModifier {
-        void modifier(Intent intent);
-    }
-
     private static final String TAG = "MobileAd";
     private static AdTimer adTimer;
     private static AdClickCounter clickCounter;
@@ -80,41 +69,27 @@ public class MobileAd {
     /**
      * Helper functions to load and show the Interstitial ad.
      * @param currentActivity Activity Instance
-     * @param postAction action that should be run in the end.
+     * @param do_after action that should be run in the end.
      */
-    public static void loadInterAd(Activity currentActivity, Runnable postAction) {
+    public static void loadInterAd(Activity currentActivity, Runnable do_after) {
         if (isConnectedToNetwork(currentActivity) && getAdClickCounter().canTrigger()) {
             InterstitialAdLoader adLoader = InterstitialAdLoader.getInstance();
-            adLoader.showAd(currentActivity, () -> {
-                if (postAction != null) postAction.run();
-                adLoader.loadAd(currentActivity);
-            });
+            adLoader.showAd(currentActivity, do_after);
         } else  {
-            if (postAction != null) postAction.run();
+            if (do_after != null) do_after.run();
         }
     }
 
 
-    public static void loadAppOpenAd(Activity currentActivity, Runnable postAction) {
+    /**
+     * Helper function to load and show the app open ad
+     * @param currentActivity
+     * @param do_after
+     */
+    public static void loadAppOpenAd(Activity currentActivity, Runnable do_after) {
         AppOpenAdLoader appOpenAdLoader = AppOpenAdLoader.getInstance();
-        appOpenAdLoader.postAction(() -> {
-            appOpenAdLoader.loadAd(currentActivity);
-            if (postAction != null)
-            postAction.run();
-        });
-        appOpenAdLoader.showAd(currentActivity);
+        appOpenAdLoader.showAd(currentActivity, do_after);
+        // load an add for the next time
+        appOpenAdLoader.loadAd(currentActivity);
     }
-
-    public static void startActivityWithAppOpenAd(Activity currentActivity, Class<? extends Activity> dest) {
-        AppOpenAdLoader appOpenAdLoader = AppOpenAdLoader.getInstance();
-        appOpenAdLoader.postAction(() -> {
-            AndroidUtility.console("Running Post Action");
-            AndroidUtility.startActivity(currentActivity, dest);
-            // load ad for the next time
-            appOpenAdLoader.loadAd(currentActivity);
-        });
-        appOpenAdLoader.showAd(currentActivity);
-    }
-
-
 }

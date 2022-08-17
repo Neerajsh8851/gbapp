@@ -29,6 +29,7 @@ public class LauncherActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.content_full_screen_progressbar);
         _sharedPrefs = getSharedPreferences("settings", Context.MODE_PRIVATE);
         HandlerThread handlerThread = new HandlerThread("HandlerThread-LauncherActivity");
         handlerThread.start();
@@ -62,6 +63,9 @@ public class LauncherActivity extends AppCompatActivity {
             console(TAG, "firebase config updated");
             _sharedPrefs.edit().putBoolean("remote-config", true).apply();
         }
+
+        // used in the app
+        IPLocation.create(this).request_location();
     }
 
     private void task3() {

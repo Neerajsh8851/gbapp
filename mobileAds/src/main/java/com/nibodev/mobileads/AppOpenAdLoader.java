@@ -24,7 +24,6 @@ public class AppOpenAdLoader  {
     private ArrayList<AppOpenAd> mAppOpenAds;
     private final Handler handler;
     private static AppOpenAdLoader instance;
-    private Runnable mPostAction;
 
     private AppOpenAdLoader() {
         handler = new Handler(Looper.getMainLooper());
@@ -61,17 +60,10 @@ public class AppOpenAdLoader  {
     }
 
     /**
-     * Action to be performed after ad shown or failed to show
-     */
-    public void postAction(Runnable action) {
-        mPostAction = action;
-    }
-
-    /**
      * Load and show ad on the Main ui thread.
      * @param activity
      */
-    public void showAd(Activity activity) {
+    public void showAd(Activity activity, Runnable do_after) {
         handler.post(()->{
             if (isAdAvailable()) {
                 AppOpenAd appOpenAd = mAppOpenAds.remove(0);
@@ -83,14 +75,18 @@ public class AppOpenAdLoader  {
 
                     @Override
                     public void onAdDismissedFullScreenContent() {
-                        if (mPostAction != null)
-                            mPostAction.run();
+                        if (do_after != null)
+                        {
+                            do_after.run();
+                        }
                     }
 
                     @Override
                     public void onAdFailedToShowFullScreenContent(@NonNull AdError adError) {
-                        if (mPostAction != null)
-                            mPostAction.run();
+                        if (do_after != null)
+                        {
+                            do_after.run();
+                        }
                     }
                 });
                 appOpenAd.show(activity);
@@ -103,20 +99,22 @@ public class AppOpenAdLoader  {
                             @Override
                             public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
                                 AndroidUtility.console(TAG, "could not load the ad: " + loadAdError);
-                                if (mPostAction != null) mPostAction.run();
+                                if (do_after != null)
+                                {
+                                    do_after.run();
+                                }
                             }
 
                             @Override
                             public void onAdLoaded(@NonNull AppOpenAd appOpenAd) {
                                 AndroidUtility.console(TAG, "loaded ad: " + appOpenAd);
                                 mAppOpenAds.add( appOpenAd);
-                                showAd(activity);
+                                showAd(activity, do_after);
                             }
                         }
                 );
             }
         });
-
     }
 
     private String getAdId() {

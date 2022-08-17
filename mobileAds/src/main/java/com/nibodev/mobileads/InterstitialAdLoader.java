@@ -57,7 +57,7 @@ public class InterstitialAdLoader {
   }
 
 
-  public void showAd(Activity activity, Runnable postAction) {
+  public void showAd(Activity activity, Runnable do_after) {
     if (isAdAvailable()) {
       InterstitialAd ad = mAdList.remove(0);
       ad.setFullScreenContentCallback(new FullScreenContentCallback() {
@@ -68,12 +68,12 @@ public class InterstitialAdLoader {
 
         @Override
         public void onAdDismissedFullScreenContent() {
-          if (postAction != null) postAction.run();
+          if (do_after != null) do_after.run();
         }
 
         @Override
         public void onAdFailedToShowFullScreenContent(@NonNull AdError adError) {
-          if (postAction != null) postAction.run();
+          if (do_after != null) do_after.run();
         }
       });
       ad.show(activity);
@@ -86,13 +86,13 @@ public class InterstitialAdLoader {
                 @Override
                 public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
                   AndroidUtility.console(TAG, "Could not load the ad: " + loadAdError);
-                  if (postAction != null) postAction.run();
+                  if (do_after != null) do_after.run();
                 }
 
                 @Override
                 public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
                   mAdList.add(interstitialAd);
-                  showAd(activity, postAction);
+                  showAd(activity, do_after);
                 }
               }
       );

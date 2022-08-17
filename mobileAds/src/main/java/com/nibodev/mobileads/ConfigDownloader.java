@@ -4,8 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.JsonReader;
 
-import com.nibodev.androidutil.AndroidUtility;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -15,7 +13,7 @@ import java.net.URL;
 public class ConfigDownloader {
   private String TAG = ConfigDownloader.class.getSimpleName();
   private static ConfigDownloader instance;
-  private final String link = "https://drive.google.com/uc?id=1LFfwhAjMAxP6FZxs0o6lKiZMG9aAze6A&export=download";
+  private final String link = "place url to json config";
 
   private final SharedPreferences preferences;
 
