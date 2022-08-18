@@ -21,13 +21,15 @@ import java.util.ArrayList;
 public class AppOpenAdLoader  {
     private final String TAG = this.getClass().getSimpleName();
     private String adIdKey = "app_open_ad_id";
-    private ArrayList<AppOpenAd> mAppOpenAds;
+    private final ArrayList<AppOpenAd> ad_list;
     private final Handler handler;
     private static AppOpenAdLoader instance;
 
+    private boolean is_displaying = false;
+
     private AppOpenAdLoader() {
         handler = new Handler(Looper.getMainLooper());
-        mAppOpenAds = new ArrayList<>();
+        ad_list = new ArrayList<>();
     }
 
     public static AppOpenAdLoader getInstance() {
@@ -49,14 +51,14 @@ public class AppOpenAdLoader  {
 
                     @Override
                     public void onAdLoaded(@NonNull AppOpenAd appOpenAd) {
-                        mAppOpenAds.add( appOpenAd);
+                        ad_list.add( appOpenAd);
                     }
                 }
         ));
     }
 
     public boolean isAdAvailable() {
-        return !mAppOpenAds.isEmpty();
+        return !ad_list.isEmpty();
     }
 
     /**
@@ -66,11 +68,15 @@ public class AppOpenAdLoader  {
     public void showAd(Activity activity, Runnable do_after) {
         handler.post(()->{
             if (isAdAvailable()) {
-                AppOpenAd appOpenAd = mAppOpenAds.remove(0);
+                if (is_displaying)
+                {
+                    return;
+                }
+                AppOpenAd appOpenAd = ad_list.remove(0);
                 appOpenAd.setFullScreenContentCallback(new FullScreenContentCallback() {
                     @Override
                     public void onAdClicked() {
-                        AndroidUtility.console(TAG, "Click on ad : " + mAppOpenAds);
+                        AndroidUtility.console(TAG, "Click on ad : " + ad_list);
                     }
 
                     @Override
@@ -79,6 +85,7 @@ public class AppOpenAdLoader  {
                         {
                             do_after.run();
                         }
+                        is_displaying = false;
                     }
 
                     @Override
@@ -87,6 +94,7 @@ public class AppOpenAdLoader  {
                         {
                             do_after.run();
                         }
+                        is_displaying = true;
                     }
                 });
                 appOpenAd.show(activity);
@@ -108,7 +116,7 @@ public class AppOpenAdLoader  {
                             @Override
                             public void onAdLoaded(@NonNull AppOpenAd appOpenAd) {
                                 AndroidUtility.console(TAG, "loaded ad: " + appOpenAd);
-                                mAppOpenAds.add( appOpenAd);
+                                ad_list.add( appOpenAd);
                                 showAd(activity, do_after);
                             }
                         }

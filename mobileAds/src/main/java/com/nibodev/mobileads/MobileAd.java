@@ -75,6 +75,7 @@ public class MobileAd {
         if (isConnectedToNetwork(currentActivity) && getAdClickCounter().canTrigger()) {
             InterstitialAdLoader adLoader = InterstitialAdLoader.getInstance();
             adLoader.showAd(currentActivity, do_after);
+            adLoader.loadAd(currentActivity);
         } else  {
             if (do_after != null) do_after.run();
         }

@@ -4,8 +4,10 @@ import static com.nibodev.androidutil.AndroidUtility.console;
 import static com.nibodev.androidutil.AndroidUtility.openPrivacyPolicyInWeb;
 import static com.nibodev.androidutil.AndroidUtility.shareThisApp;
 
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.WindowCompat;
 
@@ -58,18 +60,28 @@ public class MainActivity extends AppCompatActivity {
             interAdController.loadAd();
 */
         });
-
         String adId = Fire.getString("native_ad_id_1");
         new NativeAdLoader(adId).attachNativeAd(binding.mainContent.templateView1);
+        MobileAd.loadAppOpenAd(this,null);
     }
 
 
     @Override
     public void onBackPressed() {
-        MobileAd.loadInterAd(this, ()-> {
-            AndroidUtility.startActivity(this, ExitActivity.class);
+//      finish();
+        MobileAd.loadInterAd(this, null);
+        Intent exit_activity_intent = new Intent(this, ExitActivity.class);
+        startActivityForResult(exit_activity_intent, 101);
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 101 && resultCode == RESULT_OK)
+        {
             finish();
-        });
+        }
     }
 
     public void onDestroy() {

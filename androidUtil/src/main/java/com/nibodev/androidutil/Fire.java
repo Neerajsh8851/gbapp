@@ -38,34 +38,30 @@ public class Fire {
         getRemoteConfig()
                 .fetchAndActivate()
                 .addOnCompleteListener(
-                        new OnCompleteListener<Boolean>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Boolean> task) {
-                                result.isComplete = true;
-                                if (task.isSuccessful()) {
-                                    result.updated = task.getResult();
-                                    System.out.println("");
-                                }
-                                if (waitForResult)
-                                synchronized (result) {
-                                    result.notifyAll();
-                                }
+                        task -> {
+                            result.isComplete = true;
+                            if (task.isSuccessful()) {
+                                result.updated = task.getResult();
+                                System.out.println("");
+                            }
+                            if (waitForResult)
+                            synchronized (result) {
+                                result.notifyAll();
                             }
                         }
                 );
         // wait for completion
         if (waitForResult)
-        while (!result.isComplete) {
+        {
             try {
                 synchronized (result) {
-                    System.out.println("Firebase fetch request: waiting for the result");
-                    result.wait();
-                    System.out.println("Firebase fetch complete: updated = " + result.updated);
+                    result.wait(10000);
                 }
             } catch (InterruptedException ex) {
                 ex.printStackTrace();
             }
         }
+
         return result.updated;
     }
 }

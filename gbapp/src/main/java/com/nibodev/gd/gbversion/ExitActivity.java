@@ -23,11 +23,13 @@ public class ExitActivity extends AppCompatActivity {
 
         binding.btnNo.setOnClickListener(v -> {
             AndroidUtility.startActivity(this, MainActivity.class);
-            finishAfterTransition();
+            finish();
         });
 
         binding.btnYes.setOnClickListener(v -> {
-            finishAndRemoveTask();
+            // result ok means: quit application
+            setResult(RESULT_OK);
+            finish();
         });
 
         String adUnitId = Fire.getString("native_ad_id_1");

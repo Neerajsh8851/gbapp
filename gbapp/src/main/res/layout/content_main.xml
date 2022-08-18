@@ -36,20 +36,8 @@
                 android:paddingRight="14dp"
                 android:text="@string/app_name"
                 android:textColor="?attr/colorOnSurface"
-                android:textSize="35sp"
+                android:textSize="28sp"
                 android:textStyle="bold" />
-
-            <TextView
-                android:alpha="0.7"
-                android:gravity="center"
-                android:layout_gravity="center_horizontal"
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:paddingLeft="14dp"
-                android:paddingRight="14dp"
-                android:text="2022-23"
-                android:textColor="?attr/colorOnSurface"
-                android:textSize="15sp" />
         </LinearLayout>
 
         <LinearLayout

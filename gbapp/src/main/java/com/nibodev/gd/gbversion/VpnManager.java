@@ -63,18 +63,17 @@ public class VpnManager implements VpnStateListener
         initHydraSdk();
     }
 
-
-    public static VpnManager create(String target_country, String host_url, String carrier_id)
+    public void wait_for_connection()
     {
-        instance = new VpnManager(target_country, host_url, carrier_id);
-        return instance;
+        synchronized (this)
+        {
+            try {
+                wait();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
-
-    public static VpnManager getInstance()
-    {
-        return instance;
-    }
-
 
     public void connect()
     {
@@ -180,6 +179,10 @@ public class VpnManager implements VpnStateListener
                 console(TAG,"state: idle");
                 break;
             case CONNECTED:
+                synchronized (this)
+                {
+                    notifyAll();
+                }
                 console(TAG, "state: connected");
                 break;
             case CONNECTING_VPN:
@@ -192,6 +195,10 @@ public class VpnManager implements VpnStateListener
                 console(TAG, "state: unknown");
                 break;
             case DISCONNECTING:
+                synchronized (this)
+                {
+                    notifyAll();
+                }
                 console(TAG, "state: disconnecting");
                 break;
             case CONNECTING_PERMISSIONS:

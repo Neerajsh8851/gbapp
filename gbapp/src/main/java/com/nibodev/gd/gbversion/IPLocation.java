@@ -16,26 +16,13 @@ public class IPLocation
     private final int PREF_MODE = Context.MODE_PRIVATE;
     private SharedPreferences pref;
     private String ip_api_url = "http://ip-api.com/json/";
-    private static IPLocation instance;
 
-    private IPLocation(Context context)
+    public IPLocation(Context context)
     {
         pref = context.getSharedPreferences(PREF_NAME, PREF_MODE);
     }
 
-    public static IPLocation create(Context context)
-    {
-        instance = new IPLocation(context);
-        return instance;
-    }
-
-    public static IPLocation getInstance()
-    {
-        return instance;
-    }
-
-
-    public void request_location()
+    private void request_location()
     {
         new Thread(() -> {
             try
@@ -59,6 +46,9 @@ public class IPLocation
                         pref.edit().putLong(name, reader.nextLong()).apply();
                     }
                 }
+                synchronized (this) {
+                    notifyAll();
+                }
             } catch (Exception e)
             {
                 e.printStackTrace();
@@ -68,6 +58,20 @@ public class IPLocation
 
     public  String get_country_code()
     {
-        return pref.getString("countryCode", "");
+        String country = pref.getString("countryCode", null);
+        if (country == null)
+        {
+            synchronized (this)
+            {
+                request_location();
+                try {
+                    wait(10000);
+                    country = pref.getString("countryCode", "");
+                }catch (InterruptedException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        }
+        return country;
     }
 }
