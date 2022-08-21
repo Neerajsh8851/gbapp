@@ -49,6 +49,12 @@ public class LauncherActivity extends AppCompatActivity {
         MobileAd.init(this);
     }
 
+
+    /**
+     * Fetches the firebase config settings
+     * It waits for the fetch result if the config settings is already not fetched.
+     * Otherwise it does not wait for the fetch result but it only issues a fetch to update the config that was already loaded previously.
+     */
     private void fetch_config() {
         boolean wait = !_sharedPrefs.getBoolean("remote-config", false);
         // if wait is true, this call blocks for the result
@@ -86,8 +92,10 @@ public class LauncherActivity extends AppCompatActivity {
         }
     }
 
+
     private void get_to_the_home() {
-        AndroidUtility.startActivity(this, MainActivity.class);
+        AndroidUtility.startActivity(this, HomeAcitivity.class);
+        finish();
     }
 
 

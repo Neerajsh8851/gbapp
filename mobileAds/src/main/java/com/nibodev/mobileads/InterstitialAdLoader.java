@@ -65,9 +65,6 @@ public class InterstitialAdLoader {
 
     public void showAd(Activity activity, Runnable do_after) {
         if (isAdAvailable()) {
-
-            Log.d(TAG, "showAd: ad available");
-            
             InterstitialAd ad = mAdList.remove(0);
             ad.setFullScreenContentCallback(new FullScreenContentCallback() {
                 @Override
@@ -86,6 +83,9 @@ public class InterstitialAdLoader {
                 }
             });
             ad.show(activity);
+        }
+        else if (do_after != null){
+            do_after.run();
         }
     }
 

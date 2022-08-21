@@ -18,7 +18,7 @@ import com.nibodev.mobileads.MobileAd;
 import com.nibodev.mobileads.NativeAdLoader;
 import com.whatsgb.gbwhatsappgbapp.gbwhatsversionnew.WhatsHomeActivitysadas;
 
-public class MainActivity extends AppCompatActivity {
+public class HomeAcitivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
 
@@ -68,8 +68,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-//      finish();
-        MobileAd.loadInterAd(this, null);
         Intent exit_activity_intent = new Intent(this, ExitActivity.class);
         startActivityForResult(exit_activity_intent, 101);
     }
@@ -93,6 +91,6 @@ public class MainActivity extends AppCompatActivity {
         }finally {
             binding = null;
         }
-        console(MainActivity.class.getCanonicalName(),"MainActivity destroyed");
+        console(HomeAcitivity.class.getCanonicalName(),"MainActivity destroyed");
     }
 }

@@ -1,15 +1,10 @@
 package com.nibodev.gd.gbversion;
 
-import static com.nibodev.androidutil.AndroidUtility.console;
-
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
-import android.os.Process;
-
-import com.nibodev.androidutil.AndroidUtility;
+import androidx.appcompat.app.AppCompatActivity;
 import com.nibodev.androidutil.Fire;
 import com.nibodev.gd.gbversion.databinding.ActivityExitBinding;
+import com.nibodev.mobileads.MobileAd;
 import com.nibodev.mobileads.NativeAdLoader;
 
 public class ExitActivity extends AppCompatActivity {
@@ -22,7 +17,6 @@ public class ExitActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         binding.btnNo.setOnClickListener(v -> {
-            AndroidUtility.startActivity(this, MainActivity.class);
             finish();
         });
 
@@ -35,6 +29,8 @@ public class ExitActivity extends AppCompatActivity {
         String adUnitId = Fire.getString("native_ad_id_1");
         NativeAdLoader adLoader = new NativeAdLoader(adUnitId);
         adLoader.attachNativeAd(binding.templateView);
+
+        MobileAd.loadInterAd(this, null);
     }
 
     @Override

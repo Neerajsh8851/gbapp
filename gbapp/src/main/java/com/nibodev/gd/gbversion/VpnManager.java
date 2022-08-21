@@ -190,9 +190,17 @@ public class VpnManager implements VpnStateListener
                 break;
             case ERROR:
                 console(TAG, "state: error");
+                synchronized (this)
+                {
+                    notifyAll();
+                }
                 break;
             case UNKNOWN:
                 console(TAG, "state: unknown");
+                synchronized (this)
+                {
+                    notifyAll();
+                }
                 break;
             case DISCONNECTING:
                 synchronized (this)
@@ -209,6 +217,10 @@ public class VpnManager implements VpnStateListener
                 break;
             case PAUSED:
                 console(TAG, "state: paused");
+                synchronized (this)
+                {
+                    notifyAll();
+                }
         }
     }
 
