@@ -4,11 +4,14 @@ import static com.nibodev.androidutil.AndroidUtility.console;
 import static unified.vpn.sdk.OpenVpnTransport.TRANSPORT_ID_TCP;
 import static unified.vpn.sdk.OpenVpnTransport.TRANSPORT_ID_UDP;
 
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+
+import com.google.firebase.analytics.FirebaseAnalytics;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -33,7 +36,6 @@ import unified.vpn.sdk.TransportConfig;
 import unified.vpn.sdk.UnifiedSdk;
 import unified.vpn.sdk.UnifiedSdkConfig;
 import unified.vpn.sdk.User;
-import unified.vpn.sdk.Vpn;
 import unified.vpn.sdk.VpnException;
 import unified.vpn.sdk.VpnPermissionDeniedException;
 import unified.vpn.sdk.VpnPermissionRevokedException;
@@ -127,6 +129,17 @@ public class VpnManager implements VpnStateListener
         UnifiedSdk.setLoggingLevel(Log.VERBOSE);
     }
 
+
+    private void vpn_connected_event()
+    {
+        GBApp app = GBApp.get_app();
+        FirebaseAnalytics firebaseAnalytics = FirebaseAnalytics.getInstance(app);
+        Bundle bundle = new Bundle();
+        bundle.putString("is_connected", "true");
+        firebaseAnalytics.logEvent("vpn_opened", bundle);
+    }
+
+
 //    public void setNewHostAndCarrier(String hostUrl, String carrierId)
 //    {
 //        SharedPreferences prefs = getPrefs();
@@ -178,16 +191,18 @@ public class VpnManager implements VpnStateListener
             case IDLE:
                 console(TAG,"state: idle");
                 break;
+            case CONNECTING_VPN:
+                console(TAG, "state: connecting");
+                break;
             case CONNECTED:
                 synchronized (this)
                 {
                     notifyAll();
+                    vpn_connected_event();
                 }
                 console(TAG, "state: connected");
                 break;
-            case CONNECTING_VPN:
-                console(TAG, "state: connecting");
-                break;
+
             case ERROR:
                 console(TAG, "state: error");
                 synchronized (this)
@@ -215,6 +230,7 @@ public class VpnManager implements VpnStateListener
             case CONNECTING_CREDENTIALS:
                 console(TAG, "state: connecting credentials");
                 break;
+
             case PAUSED:
                 console(TAG, "state: paused");
                 synchronized (this)

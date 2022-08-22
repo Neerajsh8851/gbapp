@@ -2,6 +2,9 @@ package com.nibodev.gd.gbversion;
 
 import static com.nibodev.androidutil.AndroidUtility.console;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ValueAnimator;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -13,10 +16,12 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.util.Log;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.nibodev.androidutil.AndroidUtility;
 import com.nibodev.androidutil.Fire;
 import com.nibodev.mobileads.MobileAd;
@@ -25,28 +30,57 @@ import java.util.HashMap;
 
 public class LauncherActivity extends AppCompatActivity {
     private static final String TAG = "LauncherActivity";
-    private SharedPreferences _sharedPrefs;
+    private SharedPreferences m_shared_pref;
 
-    private Handler _handler;
+    private Handler m_handler;
+    private LottieAnimationView m_lottie_progress;
+    private TextView m_progress_text;
+    private ValueAnimator m_progress_animator;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.content_full_screen_progressbar);
-        _sharedPrefs = getSharedPreferences("settings", Context.MODE_PRIVATE);
+        m_shared_pref = getSharedPreferences("settings", Context.MODE_PRIVATE);
         HandlerThread handlerThread = new HandlerThread("HandlerThread-LauncherActivity");
         handlerThread.start();
-        _handler = new Handler(handlerThread.getLooper());
-        _handler.post(() -> new IPLocation(this).get_country_code());
-        _handler.post(this::init_mobile_ad);
-        _handler.post(this::fetch_config);
-        _handler.post(this::get_to_the_home);
+        m_handler = new Handler(handlerThread.getLooper());
+
+        m_handler.post(() -> new IPLocation(this).get_country_code());
+        m_handler.post(this::init_mobile_ad);
+        m_handler.post(this::fetch_config);
+
+        m_lottie_progress = findViewById(R.id.progress_bar);
+        m_progress_text = findViewById(R.id.progress_text);
+        m_progress_animator = ValueAnimator.ofFloat(0, 1);
+        m_progress_animator.setDuration(60 * 1000); // ms
+        m_progress_animator.start();
+
+        m_progress_animator.addUpdateListener(animation -> {
+            Float value = (Float) animation.getAnimatedValue();
+            update_progress_text(value);
+        });
+
+        m_progress_animator.addListener(new AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                get_to_the_home();
+            }
+        });
     }
 
 
+    public void update_progress_text(float value)
+    {
+        runOnUiThread(()-> {
+            int int_value = (int) (value * 100);
+            m_lottie_progress.setProgress(value);
+            m_progress_text.setText(int_value + " %");
+        });
+    }
 
     private void init_mobile_ad() {
-        MobileAd.init(this);
+//        MobileAd.init(this);
     }
 
 
@@ -56,7 +90,7 @@ public class LauncherActivity extends AppCompatActivity {
      * Otherwise it does not wait for the fetch result but it only issues a fetch to update the config that was already loaded previously.
      */
     private void fetch_config() {
-        boolean wait = !_sharedPrefs.getBoolean("remote-config", false);
+        boolean wait = !m_shared_pref.getBoolean("remote-config", false);
         // if wait is true, this call blocks for the result
         Long start_time = System.currentTimeMillis();
         boolean updated = Fire.fetchAndActivate(wait);
@@ -69,7 +103,7 @@ public class LauncherActivity extends AppCompatActivity {
             console(TAG, "remote config updated");
         if (updated && wait) {
             console(TAG, "firebase config updated");
-            _sharedPrefs.edit().putBoolean("remote-config", true).apply();
+            m_shared_pref.edit().putBoolean("remote-config", true).apply();
         }
 
         String country_code = new IPLocation(this).get_country_code();
@@ -86,16 +120,22 @@ public class LauncherActivity extends AppCompatActivity {
                 end_time = System.currentTimeMillis();
                 time_taken =  end_time - start_time;
                 Log.d(TAG, "task2: time taken by vpn = " + time_taken);
+
+                m_progress_animator.setDuration(5 * 1000);
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
+        } else  {
+            m_progress_animator.setDuration(5 * 1000);
         }
     }
 
 
     private void get_to_the_home() {
-        AndroidUtility.startActivity(this, HomeAcitivity.class);
-        finish();
+        runOnUiThread(()-> {
+            AndroidUtility.startActivity(this, HomeAcitivity.class);
+            finish();
+        });
     }
 
 

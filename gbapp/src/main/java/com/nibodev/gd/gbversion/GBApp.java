@@ -17,6 +17,10 @@ import com.nibodev.androidutil.AndroidUtility;
 import com.nibodev.mobileads.MobileAd;
 
 public class GBApp extends Application {
+
+    // global static
+    private static GBApp instance;
+
     private final String TAG = "GBApp";
     public Object obj = null;
     private int activityCount = 0;
@@ -25,6 +29,10 @@ public class GBApp extends Application {
 
     private VpnManager vpn_manager;
 
+    public static GBApp get_app()
+    {
+        return instance;
+    }
 
     public void set_vpn_manager(VpnManager vpn_manager)
     {
@@ -99,5 +107,6 @@ public class GBApp extends Application {
                 }
             }
         });
+        instance = this;
     }
 }
