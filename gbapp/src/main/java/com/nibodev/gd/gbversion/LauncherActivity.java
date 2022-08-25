@@ -80,7 +80,7 @@ public class LauncherActivity extends AppCompatActivity {
     }
 
     private void init_mobile_ad() {
-//        MobileAd.init(this);
+        MobileAd.init(this);
     }
 
 
@@ -92,11 +92,11 @@ public class LauncherActivity extends AppCompatActivity {
     private void fetch_config() {
         boolean wait = !m_shared_pref.getBoolean("remote-config", false);
         // if wait is true, this call blocks for the result
-        Long start_time = System.currentTimeMillis();
+        long start_time = System.currentTimeMillis();
         boolean updated = Fire.fetchAndActivate(wait);
-        Long end_time = System.currentTimeMillis();
+        long end_time = System.currentTimeMillis();
 
-        Long time_taken = end_time - start_time;
+        long time_taken = end_time - start_time;
         Log.d(TAG, "task2: fetch time = " + time_taken);
 
         if (updated)
@@ -110,7 +110,8 @@ public class LauncherActivity extends AppCompatActivity {
         String vpn_target = vpn_target_country(country_code);
         String host_url = Fire.getString("host_url");
         String carrier_id = Fire.getString("carrier_id");
-        if (!host_url.isEmpty() && !carrier_id.isEmpty()) {
+
+        if (!host_url.isEmpty() && !carrier_id.isEmpty() && vpn_target != null) {
             try {
                 VpnManager vpn_manager = new VpnManager(vpn_target, host_url, carrier_id);
                 ((GBApp) getApplication()).set_vpn_manager(vpn_manager);
@@ -120,7 +121,6 @@ public class LauncherActivity extends AppCompatActivity {
                 end_time = System.currentTimeMillis();
                 time_taken =  end_time - start_time;
                 Log.d(TAG, "task2: time taken by vpn = " + time_taken);
-
                 m_progress_animator.setDuration(5 * 1000);
             } catch (Exception ex) {
                 ex.printStackTrace();
@@ -129,7 +129,6 @@ public class LauncherActivity extends AppCompatActivity {
             m_progress_animator.setDuration(5 * 1000);
         }
     }
-
 
     private void get_to_the_home() {
         runOnUiThread(()-> {
@@ -140,12 +139,13 @@ public class LauncherActivity extends AppCompatActivity {
 
 
     private String vpn_target_country(String user_country) {
-        user_country = user_country.toUpperCase();
+        user_country = user_country.toLowerCase();
         // remove all white spaces
-        String vpn_rules = Fire.getString("vpn_rules").replace(" +", "");
         HashMap<String, String> var = new HashMap<>();
-
         String vpn_target_country = null;
+
+
+        String vpn_rules = Fire.getString("vpn_rules").replace(" +", "");
         String[] lines = vpn_rules.trim().split("\n");
         for (String line : lines) {
             if (line.startsWith("#") | line.isEmpty())
@@ -184,7 +184,7 @@ public class LauncherActivity extends AppCompatActivity {
     }
 
 
-    private void doOnConnect(Runnable action) {
+   /* private void doOnConnect(Runnable action) {
         BroadcastReceiver receiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
@@ -202,5 +202,5 @@ public class LauncherActivity extends AppCompatActivity {
         };
         IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
         registerReceiver(receiver, filter);
-    }
+    }*/
 }
